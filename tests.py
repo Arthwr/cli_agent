@@ -1,26 +1,11 @@
-from functions.get_files_info import get_files_info
+from functions.run_python import run_python_file
 
 
 def test():
-    result = get_files_info("calculator", ".")
-    print("Result for current directory:")
-    print(result)
-    print("")
-
-    result = get_files_info("calculator", "pkg")
-    print("Result for 'pkg' directory:")
-    print(result)
-    print("")
-
-    result = get_files_info("calculator", "/bin")
-    print("Result for '/bin' directory:")
-    print(result)
-    print("")
-
-    result = get_files_info("calculator", "../")
-    print("Result for '../' directory:")
-    print(result)
-    print("")
+    print(run_python_file("calculator", "main.py"))
+    print(run_python_file("calculator", "tests.py"))
+    print(run_python_file("calculator", "../main.py"))
+    print(run_python_file("calculator", "nonexistent.py"))
 
 
 if __name__ == "__main__":
