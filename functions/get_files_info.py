@@ -1,4 +1,5 @@
 import os
+from google.genai import types
 
 
 def get_files_info(working_directory, directory=None):
@@ -23,3 +24,25 @@ def get_files_info(working_directory, directory=None):
         return "\n".join(files)
     except Exception as e:
         return f"Error listing files: {e}"
+
+
+schema_get_files_info = types.FunctionDeclaration(
+    name="get_files_info",
+    description=(
+        "Lists files and directories inside the specified path relative to the working directory."
+        "Each item includes its name, size in bytes, and whether it is a directory."
+        "Access is restricted to directories within the working directory."
+    ),
+    parameters=types.Schema(
+        type=types.Type.OBJECT,
+        properties={
+            "directory": types.Schema(
+                type=types.Type.STRING,
+                description=(
+                    "Relative path to the target directory from the working directory."
+                    "If omitted, the working directory itself will be listed."
+                ),
+            )
+        },
+    ),
+)

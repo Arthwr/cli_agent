@@ -1,0 +1,6 @@
+
+MODEL_NAME = "gemini-2.0-flash-001"
+MAX_CHARS = 10000
+MAX_SECONDS_TIMEOUT = 30
+WORKING_DIR = "./calculator"
+MAX_FN_CALLS = 20
